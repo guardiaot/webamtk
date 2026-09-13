@@ -96,6 +96,25 @@ export default function CollectionDrivers() {
     { label: "Código", field: "code" },
     { label: "Nome", field: "name" },
     {
+      label: "Categoria",
+      field: "category",
+      render: (value) => {
+        const labels = {
+          protocol: "Protocolo",
+          service: "Serviço / Capacidade",
+          integration: "Integração",
+          strategy: "Estratégia de Coleta",
+          utility: "Utilitário",
+          none: "Sem Driver",
+        };
+        return (
+          <span className="badge bg-light text-dark">
+            {labels[value] || value || "—"}
+          </span>
+        );
+      },
+    },
+    {
       label: "IMPLANTADO NO AGENT",
       field: "agent_status",
       sortable: false,

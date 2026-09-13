@@ -11,6 +11,7 @@ export default function CollectionDriverForm({
   const [form, setForm] = useState({
     code: "",
     name: "",
+    category: "protocol",
     description: "",
     enabled: true,
   });
@@ -22,10 +23,11 @@ export default function CollectionDriverForm({
           ? {
               code: driver.code || "",
               name: driver.name || "",
+              category: driver.category || "protocol",
               description: driver.description || "",
               enabled: Boolean(driver.enabled),
             }
-          : { code: "", name: "", description: "", enabled: true },
+          : { code: "", name: "", category: "protocol", description: "", enabled: true },
       ),
     [driver],
   );
@@ -60,6 +62,7 @@ export default function CollectionDriverForm({
           body: JSON.stringify({
             code: form.code.trim(),
             name: form.name.trim(),
+            category: form.category,
             description: form.description.trim(),
             enabled: form.enabled,
           }),
@@ -106,6 +109,23 @@ export default function CollectionDriverForm({
             required
             autoFocus
           />
+        </div>
+        <div className="mb-3">
+          <label className="form-label">Categoria *</label>
+          <select
+            className="form-select"
+            name="category"
+            value={form.category}
+            onChange={change}
+            required
+          >
+            <option value="protocol">Protocolo</option>
+            <option value="service">Serviço / Capacidade</option>
+            <option value="integration">Integração</option>
+            <option value="strategy">Estratégia de Coleta</option>
+            <option value="utility">Utilitário</option>
+            <option value="none">Sem Driver</option>
+          </select>
         </div>
         <div className="mb-3">
           <label className="form-label">Descrição</label>
