@@ -1,0 +1,79 @@
+/* ==========================
+   Bootstrap Look
+========================== */
+.SumoSelect {
+    width: 100% !important;
+}
+.SumoSelect > .CaptionCont {
+    border: 1px solid #ced4da !important;
+    border-radius: .375rem !important;
+    background: #fff !important;
+    min-height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem !important;
+    display: flex;
+    align-items: center;
+    box-shadow: none !important;
+    transition: border-color .15s ease-in-out,
+                box-shadow .15s ease-in-out;
+}
+.SumoSelect:hover > .CaptionCont{
+    border-color:#86b7fe !important;
+}
+.SumoSelect:focus-within > .CaptionCont{
+    border-color:#86b7fe !important;
+    box-shadow:0 0 0 .25rem rgba(13,110,253,.25)!important;
+}
+.SumoSelect.open > .CaptionCont{
+    border-color:#86b7fe !important;
+    box-shadow:0 0 0 .25rem rgba(13,110,253,.25)!important;
+}
+/* Texto */
+.SumoSelect>.CaptionCont>span{
+    color:#212529;
+    font-size:1rem;
+    line-height:1.5;
+}
+/* Placeholder */
+.SumoSelect>.CaptionCont>label{
+    color:#6c757d;
+}
+/* seta */
+.SumoSelect>.CaptionCont>label>i{
+    opacity:.6;
+}
+/* popup */
+.SumoSelect>.optWrapper{
+    border-radius:.375rem;
+    border:1px solid #ced4da;
+    margin-top:2px;
+    box-shadow:0 .5rem 1rem rgba(0,0,0,.15);
+}
+/* pesquisa */
+.SumoSelect>.optWrapper>.search>input{
+    border:1px solid #ced4da;
+    border-radius:.375rem;
+    padding:.375rem .75rem;
+    margin:8px;
+    width:calc(100% - 16px);
+}
+/* opções */
+.SumoSelect>.optWrapper>.options li{
+    padding:.45rem .75rem;
+    font-size:.95rem;
+}
+.SumoSelect>.optWrapper>.options li:hover{
+    background:#e9ecef;
+}
+.SumoSelect>.optWrapper>.options li.selected{
+    background:#0d6efd;
+    color:#fff;
+}
+/* checkbox */
+.SumoSelect>.optWrapper.multiple>.options li span i{
+    border-radius:.25rem;
+}
+/* disabled */
+.SumoSelect.disabled>.CaptionCont{
+    background:#e9ecef!important;
+    opacity:1;
+}

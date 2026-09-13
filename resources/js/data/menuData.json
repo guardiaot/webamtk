@@ -1,0 +1,213 @@
+[
+    {
+        "header": "",
+        "items": [
+            {
+                "text": "Dashboard",
+                "icon": "mdi:home",
+                "available": true,
+                "link": "/home"
+            }
+        ]
+    },
+    {
+        "header": "Cadastros",
+        "items": [
+            {
+                "text": "Pessoas",
+                "icon": "mdi:account-group",
+                "available": true,
+                "link": "",
+                "submenu": [
+                    {
+                        "text": "Logs",
+                        "available": true,
+                        "link": "/ui/accordion"
+                    },
+                    {
+                        "text": "Tarefas cron",
+                        "available": true,
+                        "link": "/ui/alerts"
+                    }
+                ]
+            },
+            {
+                "text": "Cadastros",
+                "icon": "mdi:plus",
+                "available": true,
+                "link": "",
+                "submenu": [
+                    {
+                        "text": "Logs",
+                        "available": true,
+                        "link": "/ui/accordion"
+                    },
+                    {
+                        "text": "Tarefas cron",
+                        "available": true,
+                        "link": "/ui/alerts"
+                    }
+                ]
+            },
+            {
+                "text": "Financeiro",
+                "icon": "mdi:currency-usd",
+                "available": true,
+                "link": "",
+                "submenu": [
+                    {
+                        "text": "Logs",
+                        "available": true,
+                        "link": "/ui/accordion"
+                    },
+                    {
+                        "text": "Tarefas cron",
+                        "available": true,
+                        "link": "/ui/alerts"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "header": "Gerenciamento",
+        "items": [
+            {
+                "text": "Anotação",
+                "icon": "mdi:note-edit-outline",
+                "available": true,
+                "link": "/anotacao"
+            },
+            {
+                "text": "Caixa",
+                "icon": "mdi:cash-register",
+                "available": true,
+                "link": "/caixa"
+            },
+            {
+                "text": "Tarefas / Agendas",
+                "icon": "mdi:calendar-cursor",
+                "available": true,
+                "link": "/tarefas"
+            },
+            {
+                "text": "Abertura de contratos",
+                "icon": "mdi:file-document-edit-outline",
+                "available": true,
+                "link": "/aberturas-de-contratos"
+            },
+            {
+                "text": "Gerar contratos",
+                "icon": "mdi:file-document-plus-outline",
+                "available": true,
+                "link": "/gerar-contratos"
+            },
+            {
+                "text": "Processos",
+                "icon": "mdi:archive-refresh-outline",
+                "available": true,
+                "link": "/processos"
+            }
+            ,
+            {
+                "text": "Processos andamento",
+                "icon": "mdi:file-arrow-left-right-outline",
+                "available": true,
+                "link": "/processos-andamento"
+            },
+             {
+                "text": "Casos solicitados",
+                "icon": "mdi:account-filter-outline",
+                "available": true,
+                "link": "/casos-solicitados"
+            },
+            {
+                "text": "Audiencias",
+                "icon": "mdi:calendar",
+                "available": true,
+                "link": "",
+                "submenu": [
+                    {
+                        "text": "Audiencias",
+                        "available": true,
+                        "link": "/audiencias"
+                    },
+                    {
+                        "text": "Relatórios audiencias",
+                        "available": true,
+                        "link": "/relatorios-audiencias"
+                    }
+                ]
+            },
+            {
+                "text": "Pericias",
+                "icon": "mdi:account-filter-outline",
+                "available": true,
+                "link": "/pericias"
+            },
+            {
+                "text": "Benefios / DCB",
+                "icon": "mdi:calendar",
+                "available": true,
+                "link": "",
+                "submenu": [
+                    {
+                        "text": "Lançar beneficiso",
+                        "available": true,
+                        "link": "/lancameto-beneficios"
+                    },
+                    {
+                        "text": "DCB previsto mes",
+                        "available": true,
+                        "link": "/dcb-previsto-mes"
+                    },
+                    {
+                        "text": "Relatórios beneficios",
+                        "available": true,
+                        "link": "/relatorios-beneficios"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "header": "Sistema",
+        "items": [
+             {
+                "text": "Site",
+                "icon": "mdi:account-filter-outline",
+                "available": true,
+                "link": "/casos-solicitados"
+            },
+            {
+                "text": "Registros",
+                "icon": "mdi:file-document",
+                "available": true,
+                "link": "",
+                "submenu": [
+                    {
+                        "text": "Logs",
+                        "available": true,
+                        "link": "/ui/accordion"
+                    },
+                    {
+                        "text": "Tarefas cron",
+                        "available": true,
+                        "link": "/ui/alerts"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "header": "contato",
+        "items": [
+            {
+                "text": "suporte",
+                "icon": "mdi:help-circle",
+                "available": true,
+                "link": ""
+            }
+        ]
+    }
+]

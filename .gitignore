@@ -1,0 +1,110 @@
+# ============================================================
+# AMTK Web - OrigemPHP + React/Vite
+# ============================================================
+
+# DependÃªncias
+/node_modules/
+/vendor/
+
+# Ambiente / credenciais
+.env
+.env.*
+!.env.example
+
+# Vite / Frontend
+/public/build/
+/dist/
+/.vite/
+
+# Cache
+.cache/
+*.cache
+.phpunit.result.cache
+
+# OrigemPHP - arquivos gerados em runtime
+/storage/logs/*
+/storage/cache/*
+/storage/sessions/*
+/storage/tmp/*
+
+# MantÃ©m estrutura das pastas, caso existam
+!/storage/logs/.gitkeep
+!/storage/cache/.gitkeep
+!/storage/sessions/.gitkeep
+!/storage/tmp/.gitkeep
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# IDE
+/.idea/
+/.vscode/
+*.code-workspace
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# TemporÃ¡rios / backups
+*.tmp
+*.temp
+*.bak
+*.old
+*.orig
+*~
+
+# PHPUnit / testes
+.phpunit.cache/
+/coverage/
+
+# Composer
+composer.phar
+
+# AMTK - arquivos locais
+_.env
+/storage/
+# AMTK - arquivos locais
+_.env
+/storage/
+
+# Vite - arquivos gerados
+/public/hot
+/public/dist/
+
+# Metadados antigos do Dreamweaver
+_notes/
+
+# Uploads/runtime antigos - não versionar
+/public/painel/images/arquivos/*
+!/public/painel/images/arquivos/excel.png
+!/public/painel/images/arquivos/pdf.png
+!/public/painel/images/arquivos/rar.png
+!/public/painel/images/arquivos/sem-foto.png
+!/public/painel/images/arquivos/word.png
+!/public/painel/images/arquivos/xml.png
+
+/public/painel/images/contas/*
+!/public/painel/images/contas/excel.png
+!/public/painel/images/contas/pdf.png
+!/public/painel/images/contas/rar.png
+!/public/painel/images/contas/sem-foto.png
+!/public/painel/images/contas/word.png
+!/public/painel/images/contas/xml.png
+
+/public/painel/images/marketing/*
+!/public/painel/images/marketing/pdf.png
+!/public/painel/images/marketing/rar.png
+!/public/painel/images/marketing/sem-foto.jpg
+
+/public/painel/images/perfil/*
+!/public/painel/images/perfil/sem-foto.jpg
+
+/public/painel/images/assinaturas/*
+
+# Swagger UI / distribuição local
+/public/admin/dist/

@@ -1,0 +1,45 @@
+<?php
+use OrigemPHP\Config\Helpers;
+
+
+
+function assetVite($path) {
+    $manifestPath = Helpers::get_public().'build/manifest.json';
+
+    if (!file_exists($manifestPath)) {
+        throw new Exception("Manifest file not found: {$manifestPath}");
+    }
+
+    $manifest = json_decode(file_get_contents($manifestPath), true);
+
+    if (!isset($manifest[$path])) {
+        throw new Exception("Asset not found in manifest: {$path}");
+    }
+
+    return '/build/' . $manifest[$path]['file'];
+}
+?>
+
+<!DOCTYPE html>
+<html lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title inertia></title>
+
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.bunny.net">
+        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+
+       
+    </head>
+    <body class="font-sans antialiased">
+    <div id="app" data-page="{{ json_encode($page, true) }}"></div>
+    </body>
+</html>
+
+ <!-- Scripts -->
+ 
+ <script type="module" src="{{ assetVite('resources/js/app.jsx') }}"></script>
+

@@ -1,0 +1,397 @@
+<!-- CSS Personalizado -->
+<style>
+
+/* Animações */
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(56, 189, 248, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
+}
+
+.animate-pulse {
+    animation: pulse 2s infinite;
+}
+
+/* Responsividade */
+@media (max-width: 1199px) {
+    .dashboard-card .card-value {
+        font-size: 1.35rem;
+    }
+}
+
+@media (max-width: 991px) {
+    .dashboard-card .card-icon {
+        width: 40px;
+        height: 40px;
+        top: 1.25rem;
+        right: 1.25rem;
+    }
+    
+    .dashboard-card .card-body {
+        padding: 1.25rem;
+    }
+    
+    .dashboard-card .card-value {
+        font-size: 1.25rem;
+    }
+    
+    .chart-container {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .container-fluid {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+    
+    .dashboard-card {
+        margin-bottom: 0.75rem;
+    }
+    
+    .dashboard-card .card-body {
+        padding: 1rem;
+    }
+    
+    .dashboard-card .card-icon {
+        width: 36px;
+        height: 36px;
+        top: 1rem;
+        right: 1rem;
+        font-size: 0.875rem;
+    }
+    
+    .dashboard-card .card-title {
+        font-size: 0.8125rem;
+        margin-right: 2.5rem;
+    }
+    
+    .dashboard-card .card-value {
+        font-size: 1.125rem;
+    }
+    
+    .dashboard-card .card-subtitle {
+        font-size: 0.6875rem;
+    }
+    
+    .badge-sm {
+        padding: 0.2rem 0.4rem;
+        font-size: 0.6875rem;
+    }
+    
+    .chart-container {
+        padding: 1rem;
+    }
+    
+    .chart-title {
+        font-size: 0.9375rem;
+    }
+    
+    .alert-custom {
+        padding: 0.75rem;
+        flex-direction: column;
+    }
+    
+    .alert-icon {
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+    }
+    
+    .info-panel-header {
+        padding: 0.75rem;
+        font-size: 0.9375rem;
+    }
+    
+    .info-panel-body {
+        padding: 0.75rem;
+    }
+    
+    .info-item {
+        padding: 0.625rem;
+    }
+}
+
+@media (max-width: 575px) {
+    .container-fluid {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+    
+    .row {
+        margin-left: -0.5rem;
+        margin-right: -0.5rem;
+    }
+    
+    .col-xl-3, .col-lg-6, .col-md-6, .col-xl-6, .col-lg-12, .col-md-12, .col-12 {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+    
+    .dashboard-card .card-body {
+        padding: 0.875rem;
+    }
+    
+    .dashboard-card .card-icon {
+        width: 32px;
+        height: 32px;
+        top: 0.875rem;
+        right: 0.875rem;
+        font-size: 0.75rem;
+    }
+    
+    .dashboard-card .card-title {
+        font-size: 0.75rem;
+        margin-right: 2.25rem;
+    }
+    
+    .dashboard-card .card-value {
+        font-size: 1rem;
+    }
+    
+    .dashboard-card .card-subtitle {
+        font-size: 0.625rem;
+    }
+    
+    .badge-sm {
+        padding: 0.15rem 0.3rem;
+        font-size: 0.625rem;
+    }
+    
+    /* Ajustes para o layout de tarefas e vendas em telas pequenas */
+    .task-sales-card .card-body {
+        flex-direction: column;
+    }
+    
+    .task-sales-card .card-value {
+        margin-bottom: 0.75rem;
+    }
+    
+    .task-sales-card .card-icon {
+        top: 0.875rem;
+        right: 0.875rem;
+    }
+}
+
+/* Ajustes específicos para o gráfico em telas pequenas */
+@media (max-width: 480px) {
+    #statistics1 {
+        height: 300px !important;
+    }
+}
+
+/* Ajustes para melhorar a visualização em dispositivos muito pequenos */
+@media (max-width: 360px) {
+    .dashboard-card .card-body {
+        padding: 0.75rem;
+    }
+    
+    .dashboard-card .card-icon {
+        width: 28px;
+        height: 28px;
+        top: 0.75rem;
+        right: 0.75rem;
+        font-size: 0.6875rem;
+    }
+    
+    .dashboard-card .card-title {
+        font-size: 0.6875rem;
+        margin-right: 2rem;
+    }
+    
+    .dashboard-card .card-value {
+        font-size: 0.9375rem;
+    }
+    
+    #statistics1 {
+        height: 250px !important;
+    }
+}
+
+/* Estilos para o Kanban */
+.kanban-container {
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+}
+
+.kanban-card {
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+}
+
+.kanban-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.kanban-card-header {
+    padding: 1rem;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.kanban-card-title {
+    font-weight: 600;
+    font-size: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+}
+
+.kanban-card-date {
+    font-size: 0.75rem;
+    opacity: 0.8;
+}
+
+.kanban-card-body {
+    padding: 1rem;
+    flex-grow: 1;
+    background-color: white;
+}
+
+.kanban-card-text {
+    color: var(--secondary-color);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin-bottom: 0;
+    overflow-wrap: break-word;
+}
+
+.kanban-card-footer {
+    padding: 0.75rem 1rem;
+    background-color: var(--neutral-100);
+    border-top: 1px solid var(--neutral-200);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.75rem;
+    color: var(--neutral-600);
+}
+
+.kanban-card-user {
+    display: flex;
+    align-items: center;
+}
+
+.kanban-card-id {
+    font-weight: 500;
+}
+
+.bg-purple {
+    background: linear-gradient(135deg, #7E22CE, #9333EA);
+}
+
+/* Responsividade para o Kanban */
+@media (max-width: 767px) {
+    .kanban-container {
+        margin: 0 -0.5rem;
+    }
+    
+    .kanban-card-title {
+        max-width: 150px;
+    }
+}
+
+@media (max-width: 575px) {
+    .kanban-card-title {
+        max-width: 120px;
+        font-size: 0.875rem;
+    }
+    
+    .kanban-card-date {
+        font-size: 0.6875rem;
+    }
+    
+    .kanban-card-header,
+    .kanban-card-body,
+    .kanban-card-footer {
+        padding: 0.75rem;
+    }
+    
+    .kanban-card-text {
+        font-size: 0.8125rem;
+        line-height: 1.4;
+    }
+    
+    .kanban-card-user,
+    .kanban-card-id {
+        font-size: 0.6875rem;
+    }
+    
+    .kanban-card {
+        margin-bottom: 0.75rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .kanban-card-title {
+        max-width: 100px;
+        font-size: 0.8125rem;
+    }
+    
+    .kanban-card-date {
+        font-size: 0.625rem;
+    }
+    
+    .kanban-card-header,
+    .kanban-card-body,
+    .kanban-card-footer {
+        padding: 0.5rem;
+    }
+    
+    .kanban-card-text {
+        font-size: 0.75rem;
+    }
+}
+
+/* Melhorias para visualização horizontal em dispositivos móveis */
+.kanban-horizontal {
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    padding-bottom: 1rem;
+    scroll-snap-type: x proximity;
+}
+
+/* Indicador de rolagem para dispositivos móveis */
+.scroll-indicator {
+    display: none;
+    text-align: center;
+    color: var(--neutral-500);
+    font-size: 0.75rem;
+    margin-top: 0.5rem;
+    transition: opacity 0.5s ease;
+}
+
+/* Melhorias para o botão de alternar visualização em dispositivos móveis */
+.toggle-view-btn-mobile {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    min-height: 44px;
+}
+
+.toggle-view-btn-mobile:hover,
+.toggle-view-btn-mobile:focus {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+</style>
