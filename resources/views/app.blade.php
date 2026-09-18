@@ -1,55 +1,45 @@
+<?php
+use OrigemPHP\Config\Helpers;
+
+
+function assetVite($path)
+{
+    $manifestPath = dirname(__DIR__, 2) . '/public/build/manifest.json';
+
+    if (!file_exists($manifestPath)) {
+        throw new Exception("Manifest file not found: {$manifestPath}");
+    }
+
+    $manifest = json_decode(file_get_contents($manifestPath), true);
+
+    if (!isset($manifest[$path])) {
+        throw new Exception("Asset not found in manifest: {$path}");
+    }
+
+    return '/build/' . $manifest[$path]['file'];
+}
+?>
+
 <!DOCTYPE html>
 <html lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<head>
+        <title inertia></title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.bunny.net">
+        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-    <link rel="icon" type="image/x-icon" href="/assets/img/favicon/favicon.ico" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-        rel="stylesheet" />
-
-    <link rel="stylesheet" href="/assets/vendor/fonts/boxicons.css" />
-
-    <link rel="stylesheet" href="/assets/vendor/css/core.css" class="template-customizer-core-css" />
-    <link rel="stylesheet" href="/assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
-    <link rel="stylesheet" href="/assets/css/demo.css" />
-
-    <link rel="stylesheet" href="/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
-    <link rel="stylesheet" href="/assets/vendor/libs/apex-charts/apex-charts.css" />
-
-
-    <link rel="stylesheet" href="/assets/vendor/css/pages/page-auth.css" />
-
-    <script src="/assets/vendor/js/helpers.js"></script>
-    <script src="/assets/js/config.js"></script>
-
-
-</head>
-
-<body style="--bs-scrollbar-width: 15px;">
+       
+    </head>
+    <body class="font-sans antialiased">
     <div id="app" data-page="{{ json_encode($page, true) }}"></div>
-
-
-
-
-    <!-- Place this tag in your head or just before your close body tag. -->
-</body>
-
+    </body>
 </html>
 
-<!-- Scripts -->
+ <!-- Scripts -->
+ 
+ <script type="module" src="{{ assetVite('resources/js/app.jsx') }}"></script>
 
-<script type="module" src="http://localhost:5173/resources/js/app.jsx"></script>
-
-<script type="module">
-    import RefreshRuntime from 'http://localhost:5173/@react-refresh'
-    RefreshRuntime.injectIntoGlobalHook(window)
-    window.$RefreshReg$ = () => { }
-    window.$RefreshSig$ = () => (type) => type
-    window.__vite_plugin_react_preamble_installed__ = true
-</script>

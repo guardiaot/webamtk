@@ -14,6 +14,7 @@ const empty = {
   installation_id: "",
   transmission_function_id: "",
   ied_template_id: "",
+  agent_id: "",
   driver_override_id: "",
   host: "",
   port: "102",
@@ -39,6 +40,7 @@ export default function IEDForm({ ied = null, onCancel, onSuccess }) {
                 ied.transmission_function_id || "",
               ),
               ied_template_id: String(ied.ied_template_id || ""),
+              agent_id: String(ied.agent_id || ""),
               driver_override_id: String(ied.driver_override_id || ""),
               host: ied.host || "",
               port: String(ied.port || ""),
@@ -57,6 +59,7 @@ export default function IEDForm({ ied = null, onCancel, onSuccess }) {
   const include = (key) => (ied?.[key] ? { include_id: ied[key] } : {});
   const submit = async (event) => {
     event.preventDefault();
+    if (!form.agent_id) return toast.error("Preencha o Agent responsável.");
     if (
       !form.code.trim() ||
       !form.name.trim() ||
@@ -82,6 +85,7 @@ export default function IEDForm({ ied = null, onCancel, onSuccess }) {
             model: form.model.trim(),
             host: form.host.trim(),
             port: Number(form.port),
+            agent_id: form.agent_id,
             transmission_function_id: form.transmission_function_id || null,
             ied_template_id: form.ied_template_id || null,
             driver_override_id: form.driver_override_id || null,
@@ -252,27 +256,44 @@ export default function IEDForm({ ied = null, onCancel, onSuccess }) {
           </div>
         </div>
         <h6 className="border-bottom pb-2">Comunicação</h6>
-        <div className="mb-3">
-          <label className="form-label">Driver de Coleta (override)</label>
-          <AjaxSumoSelect
-            url="/api/v1/collection-drivers/simples"
-            params={include("driver_override_id")}
-            value={form.driver_override_id}
-            onChange={(e) => select("driver_override_id", e.value)}
-            valueField="id"
-            labelField="name"
-            placeholder="Usar Driver padrão do Template"
-          />
-          <div className="form-text">
-            Opcional. Se não informado, será utilizado o Driver padrão definido
-            no Template de IED.
-          </div>
-          {ied && (
-            <div className="small text-muted mt-2">
-              Driver efetivo: {ied.effective_driver_name || "não definido"}
-            </div>
-          )}
-        </div>
+       <div className="row mb-3">
+  <div className="col-md-6">
+    <label className="form-label">Agent responsável *</label>
+    <AjaxSumoSelect
+      url="/api/v1/agents/simples"
+      params={include("agent_id")}
+      value={form.agent_id}
+      onChange={(e) => select("agent_id", e.value)}
+      valueField="id"
+      labelField="name"
+      placeholder="Selecione o Agent responsável"
+    />
+  </div>
+
+  <div className="col-md-6">
+    <label className="form-label">Driver de Coleta (override)</label>
+    <AjaxSumoSelect
+      url="/api/v1/collection-drivers/simples"
+      params={include("driver_override_id")}
+      value={form.driver_override_id}
+      onChange={(e) => select("driver_override_id", e.value)}
+      valueField="id"
+      labelField="name"
+      placeholder="Usar Driver padrão do Template"
+    />
+  </div>
+
+  <div className="form-text">
+    Opcional. Se não informado, será utilizado o Driver padrão definido no
+    Template de IED.
+  </div>
+
+  {ied && (
+    <div className="small text-muted mt-2">
+      Driver efetivo: {ied.effective_driver_name || "não definido"}
+    </div>
+  )}
+</div>
         <div className="row g-3 mb-4">
           <div className="col-md-8">
             <label className="form-label">Host / IP *</label>

@@ -100,7 +100,7 @@ class IedsApi extends BaseController
     private static function find($id) { return DB::table('ieds')->where('id', $id)->first(); }
     private static function visualizarSemPermission($id) { return self::baseQuery()->where('ieds.id', $id)->first(); }
     private static function data($request): array { return $request->getPostVars(); }
-    private static function configData(array $data): array { $template = trim((string) ($data['ied_template_id'] ?? '')); $override = trim((string) ($data['driver_override_id'] ?? '')); return ['code' => trim($data['code']), 'name' => trim($data['name']), 'manufacturer' => trim((string) ($data['manufacturer'] ?? '')) ?: null, 'model' => trim((string) ($data['model'] ?? '')) ?: null, 'host' => trim($data['host']), 'port' => (int) $data['port'], 'transmission_function_id' => !empty($data['transmission_function_id']) ? (int) $data['transmission_function_id'] : null, 'ied_template_id' => $template === '' || $template === '0' ? null : (int) $template, 'driver_override_id' => $override === '' || $override === '0' ? null : (int) $override]; }
+    private static function configData(array $data): array { $template = trim((string) ($data['ied_template_id'] ?? '')); $override = trim((string) ($data['driver_override_id'] ?? '')); return ['agent_id' => trim((string) ($data['agent_id'] ?? '')), 'code' => trim($data['code']), 'name' => trim($data['name']), 'manufacturer' => trim((string) ($data['manufacturer'] ?? '')) ?: null, 'model' => trim((string) ($data['model'] ?? '')) ?: null, 'host' => trim($data['host']), 'port' => (int) $data['port'], 'transmission_function_id' => !empty($data['transmission_function_id']) ? (int) $data['transmission_function_id'] : null, 'ied_template_id' => $template === '' || $template === '0' ? null : (int) $template, 'driver_override_id' => $override === '' || $override === '0' ? null : (int) $override]; }
     private static function validate(array $data, $id = null)
     {
         $code = trim((string) ($data['code'] ?? '')); $name = trim((string) ($data['name'] ?? '')); $host = trim((string) ($data['host'] ?? '')); $port = filter_var($data['port'] ?? null, FILTER_VALIDATE_INT);
@@ -108,6 +108,16 @@ class IedsApi extends BaseController
         if ($name === '') return 'Informe o nome do IED.';
         if ($host === '') return 'Informe o host ou endereço IP.';
         if ($port === false || $port < 1 || $port > 65535) return 'Informe uma porta entre 1 e 65535.';
+
+        $agentId = trim((string) ($data['agent_id'] ?? ''));
+
+        if ($agentId === '') {
+            return 'Informe o Agent responsável.';
+        }
+
+        if (!DB::table('agents')->where('id', $agentId)->exists()) {
+            return 'Agent não encontrado.';
+        }
         $query = DB::table('ieds')->where('code', $code); if ($id !== null) $query->where('id', '<>', $id); if ($query->exists()) return 'Já existe um IED com este código.';
         if (!empty($data['transmission_function_id'])) {
             $function = DB::table('transmission_functions')->where('id', $data['transmission_function_id'])->first();
